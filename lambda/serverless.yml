@@ -1,0 +1,13 @@
+service: create-card-transaction-lambda
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+
+functions:
+  processSQSMessage:
+    handler: handler.createCardTransaction
+    events:
+      - sqs:
+          arn: arn:aws:sqs:us-east-1:654654455659:CREATE_CARD_TRANSACTION_QUEUE
