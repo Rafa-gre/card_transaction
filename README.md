@@ -18,7 +18,7 @@ Este é um projeto simples que consiste em uma API Node.js que recebe transaçõ
    git clone https://github.com/Rafa-gre/card_transaction
    cd card_transaction
    ```
-2. **Instalando Dependências:
+2. **Instalando Dependências:**
    
    ```bash
    npm install
@@ -51,6 +51,6 @@ Este é um projeto simples que consiste em uma API Node.js que recebe transaçõ
  - A documentação da API pode ser encontrada em https://card-transaction-api.onrender.com/api-docs.
   
 ## Observações
-Como o backend está hospedado em um servidor gratuito, pode levar cerca de 50 segundos para iniciar.
-Os serviços de banco de dados, mensageria e lambda estão configurados para a minha conta e não estão expostos nesse repositório 
-Para testar e verificar o funcionamento correto do sistema utilizar os links hospedados acima.
+ - Como o backend está hospedado em um servidor gratuito, pode levar cerca de 50 segundos para iniciar.
+ - Os serviços de banco de dados, fila e lambda estão configurados para a minha conta e não estão expostos nesse repositório. 
+ - Para testar e verificar o funcionamento correto do sistema utilizar os links hospedados acima.
