@@ -35,12 +35,16 @@ Este é um projeto simples que consiste em uma API Node.js que recebe transaçõ
  - Execute a API Node.js em um ambiente adequado, como AWS EC2, Heroku ou outro serviço de hospedagem
  - Certifique-se de que a API esteja acessível publicamente e atualize a URL no frontend.
   
- 5. **Testando a Aplicação:**
-
+ 5. **Populando o banco de dados com transações:**
+ - Adicione nas variáveis de ambiente a URL da api ou rode localmente em localhost:3000
+   ```
+   API_URL=https://card-transaction-api.onrender.com
+   ```
  - Execute o script de teste fornecido para criar 100 transações e fazer a requisição POST.
  - O script que cria as transações esta localizado em: 
+  
  ```bash
- ./api/populateDb.ts
+ ts-node ./api/populateDb.ts
  ```
  6. **Acessando o Frontend:**
 
