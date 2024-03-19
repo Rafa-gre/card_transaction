@@ -40,24 +40,30 @@ export class TransactionsService {
 
       const params: DynamoDB.DocumentClient.ScanInput = {
         TableName: 'card_transactions',
-        ExpressionAttributeNames: {},
-        ExpressionAttributeValues: {},
       };
 
       // Se startDate e endDate foram fornecidos, adicionamos filtros de data à consulta
       if (startDateISO && endDateISO) {
         params.FilterExpression = '#createdAt between :startDate and :endDate';
-        params.ExpressionAttributeNames['#createdAt'] = 'createdAt';
-        params.ExpressionAttributeValues[':startDate'] = startDateISO;
-        params.ExpressionAttributeValues[':endDate'] = endDateISO;
+        params.ExpressionAttributeNames = { '#createdAt': 'createdAt' };
+        params.ExpressionAttributeValues = {
+          ':startDate': startDateISO,
+          ':endDate': endDateISO,
+        };
       }
       if (type) {
         const typeFilter = '#type = :type';
         params.FilterExpression = params.FilterExpression
           ? `${params.FilterExpression} AND ${typeFilter}`
           : typeFilter;
-        params.ExpressionAttributeNames['#type'] = 'type';
-        params.ExpressionAttributeValues[':type'] = type;
+        params.ExpressionAttributeNames = {
+          ...(params.ExpressionAttributeNames || {}),
+          '#type': 'type',
+        };
+        params.ExpressionAttributeValues = {
+          ...(params.ExpressionAttributeValues || {}),
+          ':type': type,
+        };
       }
 
       const result = await this.dynamoDB.scan(params);
@@ -75,7 +81,7 @@ export class TransactionsService {
       return cardTransactions;
     } catch (error) {
       // Tratar erros, se necessário
-      throw new Error('Erro ao buscar transações.');
+      throw new Error(`Erro ao buscar transações: ${error}`);
     }
   }
 
